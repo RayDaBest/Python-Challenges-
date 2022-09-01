@@ -1,12 +1,12 @@
 import turtle 
-
-def triangle_draw(x,y,z): 
+def triangle_draw(x): 
   turtle.speed(0)
-  turtle.penup
-  turtle.goto(x,y)
-  turtle.pendown
-  for i in range (4): 
-    turtle.forward(z)
-    turtle.right(90)
-
-triangle_draw(0,0,10)
+  turtle.penup()
+  for j in range(6): 
+    for i in range(3): 
+      turtle.pendown()
+      turtle.forward(50)
+      turtle.right(120)
+    turtle.forward(50)
+    turtle.right(60)
+triangle_draw(10)
