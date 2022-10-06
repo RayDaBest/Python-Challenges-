@@ -12,4 +12,4 @@ date2 = datetime.date(year2, month2, day2)
 print("Start date: ", date1) 
 print("End date: ", date2)
 difference = date2 - date1
-print(difference)
+print(difference.day)
