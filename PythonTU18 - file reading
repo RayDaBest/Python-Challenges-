@@ -1,0 +1,8 @@
+line = 0 
+with open("ifpoem.txt","r") as whole_file:
+   for line in whole_file:
+     choice = int(input("Do you want to move to the next line? 1/0: "))
+     if choice == 1: 
+        print(line,end="")
+     else: 
+        print("Line skipped")
