@@ -1,0 +1,43 @@
+# btw for the keywords.txt doc , the keyword is separated from the definition by a tab. like   this. not a space (very important)
+# theres 243 word + definition pairs. its ch1 to 6 of theory
+
+import random
+Lives = 3 
+Score = 0 
+Term = ""
+Definition = "" 
+Answer = ""
+QuestionNumbers = []
+QuestionCounter = 0
+QuestionAmount = int(input("How many questions do you want to do? Max is 243, min is 1: "))
+
+while QuestionAmount > 243 or QuestionAmount < 1:
+  QuestionAmount = int(input("Invalid response, please try again: "))
+
+while QuestionAmount > QuestionCounter and Lives > 0:
+  Question = random.randint(1,244)
+  while Question in QuestionNumbers:
+    Question = random.randint(1,244)
+  else:
+    QuestionCounter += 1
+    QuestionNumbers.append(Question)
+    with open("keywords.txt") as file:
+      for i, line in enumerate(file):
+        if i == Question:
+          q = file.readline()
+      file.close()
+    
+    td = q.split('\t') #separates terms from definition
+    Term = td[0]
+    Definition = td[1]
+    print(Definition)
+    Answer = input("What term is the statement defining? ")
+    if Answer.upper() == Term.upper():
+      Score += 1
+      print("Correct, your score is now:",Score,"\n")
+    else:
+      Lives -= 1
+      print("Incorrect, your lives is now:", Lives)
+      print("Correct answer was",Term,"\n")
+
+print("Final score:",Score,"and lives remaining:",Lives)
