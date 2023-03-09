@@ -14,7 +14,7 @@ QuestionAmount = int(input("How many questions do you want to do? Max is 243, mi
 while QuestionAmount > 243 or QuestionAmount < 1:
   QuestionAmount = int(input("Invalid response, please try again: "))
 
-while QuestionAmount > QuestionCounter and Lives > 0:
+while QuestionAmount >= QuestionCounter and Lives > 0:
   Question = random.randint(1,244)
   while Question in QuestionNumbers:
     Question = random.randint(1,244)
@@ -35,6 +35,11 @@ while QuestionAmount > QuestionCounter and Lives > 0:
     if Answer.upper() == Term.upper():
       Score += 1
       print("Correct, your score is now:",Score,"\n")
+
+    elif Answer.upper() in Term.upper():
+      Score += 1
+      print("Correct, though the full answer was:",Term,"\nYour score is now:",Score,"\n")
+    
     else:
       Lives -= 1
       print("Incorrect, your lives is now:", Lives)
