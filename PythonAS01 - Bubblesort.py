@@ -4,20 +4,16 @@ for i in range (0, digits):
   digit = int(input("Input digit: "))
   NumbersArray.append(digit)
 print(NumbersArray)
-NumbersArray.append()
-print(NumbersArray)
 
-NoSwaps = True
-boundary = digits 
+boundary = digits - 1
+NoSwaps = True  
 while NoSwaps == True: 
-  NoSwaps = True 
+  NoSwaps = True
   for j in range (0,boundary): 
-    FirstID = NumbersArray[j]
-    SecondID = NumbersArray[j+1]
-    if FirstID > SecondID: 
-      temp = NumbersArray[j] 
-      NumbersArray[j] = NumbersArray[j+1] 
-      NumbersArray[j+1] = temp 
-      NoSwaps = False   
-    boundary = boundary - 1 
-  print(NumbersArray)
+    for i in range(0,boundary):
+      if NumbersArray[i] > NumbersArray[i+1]: 
+        Temp = NumbersArray[i]
+        NumbersArray[i] = NumbersArray[i+1]
+        NumbersArray[i+1] = Temp
+        NoSwaps = False 
+    print(NumbersArray)
