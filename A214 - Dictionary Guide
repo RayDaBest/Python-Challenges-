@@ -1,0 +1,5 @@
+monsters = open("monsters.txt","r")
+name = input("Input monster name: ")
+for index in monsters: 
+  if name in index: 
+    print(index)
