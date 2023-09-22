@@ -1,0 +1,63 @@
+
+import random
+NumbersArray = []
+difficulty = int(input("Select the difficulty from 1 to 5: "))
+if difficulty == 1:
+  digits = random.randint(2,3)
+elif difficulty == 2:
+  digits = random.randint(4,7)
+elif difficulty == 3:
+  digits = random.randint(8,10)
+elif difficulty == 4:
+  digits = random.randint(11,13)
+elif difficulty == 5:
+  digits = random.randint(14,15)
+
+for i in range (digits):
+  number = random.randint(1,100)
+  NumbersArray.append(number)
+print("Array of numbers: ", NumbersArray)
+
+def ascending(NumbersArray):
+  boundary = digits - 1
+  NoSwaps = True
+  while NoSwaps == True:
+    NoSwaps = True
+    for j in range (0,boundary):
+      for i in range(0,boundary):
+        if NumbersArray[i] > NumbersArray[i+1]:
+          Temp = NumbersArray[i]
+          NumbersArray[i] = NumbersArray[i+1]
+          NumbersArray[i+1] = Temp
+          NoSwaps = False
+  return NumbersArray
+
+def descending(NumbersArray):
+  boundary = digits - 1
+  NoSwaps = True
+  while NoSwaps == True:
+    NoSwaps = True
+    for j in range (0,boundary):
+      for i in range (0,boundary):
+        if NumbersArray[i] < NumbersArray[i+1]:
+          Temp = NumbersArray[i]
+          NumbersArray[i] = NumbersArray[i+1]
+          NumbersArray[i+1] = Temp
+          NoSwaps = False
+  return NumbersArray
+
+choice = int(input("Input 1 if you want to sort it in ascending order and 2 if in descending order: "))
+complete = input("Do you wish to see the answer? Click enter when ready: ")
+if choice == 1:
+  print("You have selected ascending order")
+  print("Final bubble sorted array: ",ascending(NumbersArray))
+elif choice == 2:
+  print("You have selected descending order")
+  print("Final bubble sorted array: ",descending(NumbersArray))
+else:
+  print("You have made an error. Please try again")
+f = open("Solutions.txt","a")
+f.write(NumbersArray)
+f.write(NumbersArray)
+
+
