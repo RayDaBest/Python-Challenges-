@@ -1,0 +1,37 @@
+def GrayCode(x,number): 
+    if x == 1:
+      print("Number :",number)
+    if x%2 == 1: 
+        final_digit = number[3]
+        if final_digit == 0: 
+            number[3] = 1  
+        else: 
+            number[3] = 0
+    elif x%4 == 2:
+        third_digit = number[2]
+        if third_digit == 0: 
+            number[2] = 1
+        else: 
+            number[2] = 0 
+    elif x%8 == 4: 
+        second_digit = number[1]
+        if second_digit == 0: 
+            number[1] = 1
+        else: 
+            number[1] = 0
+    elif x%16 == 8: 
+        first_digit = number[0]
+        if first_digit == 0: 
+            number[0] = 1
+        else: 
+            number[1] = 0
+    else:
+      return
+    x = x + 1 
+    print("Number :", number) 
+    return(GrayCode(x, number))
+x = 1
+number = [0,0,0,0]
+GrayCode(x, number)
+
+
