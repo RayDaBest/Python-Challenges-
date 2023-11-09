@@ -1,0 +1,29 @@
+import turtle
+import os
+class pattern():
+    def __init__(self):
+        self.__angle = 0
+        self.__times = 0
+    def draw_pattern(self):
+        colors = ['red', 'purple', 'blue', 'green', 'orange', 'yellow']
+        turtle.setup(800, 600)
+        turtle.bgcolor('black')
+        for x in range(self.__times):
+            turtle.pencolor(colors[x % 6])
+            turtle.width(x / 100 + 1)
+            turtle.forward(x)
+            turtle.left(self.__angle)
+        turtle.done()
+
+    def generate_pattern(self):
+        try:
+            with open("Turtlepatterns.txt") as f:
+                turtle_angle = f.readline().strip()
+                self.__angle = int(turtle_angle)
+                self.__times = int(f.readline().strip())
+            f.close()
+        except OSError:
+            print("Can't find the file sorry", os.getcwd())
+mypattern = pattern()
+mypattern.generate_pattern()
+mypattern.draw_pattern()
