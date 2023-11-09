@@ -1,0 +1,33 @@
+import os 
+class Jokes(): 
+  def __init__(self): 
+    self.__prompt = ""
+    self.__answer = ""
+    self.question_array = []
+    self.response_array = []
+  def collect_jokes(self): 
+    question_array = []
+    response_array = []
+    try: 
+        with open("Dadjokes.txt") as f: 
+          question = f.readline().strip()
+          self.question_array.append(question)
+          response = f.readline().strip()
+          self.response_array.append(response)
+          while question != "":
+            question = f.readline().strip()
+            self.question_array.append(question)
+            response = f.readline().strip()
+            self.response_array.append(response)
+        f.close()
+    except OSError: 
+      print("Can't find the file sorry", os.getcwd())
+  def printRandomJoke(self):
+    for index in range (0,9): 
+      print("Question: ", self.question_array[index])
+      User_answer = input("Please input what you think the answer will be: ")
+      print("The joke is: ",self.response_array[index])
+
+Joke = Jokes()
+Joke.collect_jokes()
+Joke.printRandomJoke()
