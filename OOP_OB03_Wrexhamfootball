@@ -1,0 +1,61 @@
+import os
+class Wrexham():
+    def __init__(self):
+        self.__playernum = "" #string
+        self.__forename = "" #string
+        self.__surname = "" #string
+        self.__position = "" #string
+        self.__communityinvolvement = 0 #real
+        self.__injured = "" #boolean
+    def GetPlayerinfo(self,number):
+        try:
+            with open("Wrexhamfile.txt") as f:
+                line = f.readline().strip()
+                while number != line:
+                    line = f.readline().strip()
+                print("Player found!")
+                forename = f.readline().strip()
+                surname = f.readline().strip()
+                position = f.readline().strip()
+                name = forename & surname
+                print("Name: ", name , "Position: ", position)
+            f.close()
+        except OSError:
+            print("Can't find the file sorry", os.getcwd())
+        return (name, position)
+    def ChangeCommunityInvolvement(self,change,playernumber):
+        try:
+            with open ("Wrexhamfile.txt","a") as f:
+                line = f.readline().strip()
+                while playernumber != line:
+                    line = f.readline().strip()
+                print("Playerfound!!")
+                forename = f.readline().strip()
+                surname = f.readline().strip()
+                position = f.readline().strip()
+                f.write(change)
+            f.close()
+        except OSError:
+            print("Can't find the file soory", os.getcwd())
+
+    def ChangedInjured(self,injured_status,playernumber):
+        try:
+            with open ("Wrexhamfile.txt","a") as f:
+                line = f.readline().strip()
+                while playernumber != line:
+                    line = f.readline().strip()
+                print("Playerfound!!")
+                forename = f.readline().strip()
+                surname = f.readline().strip()
+                position = f.readline().strip()
+                f.write(injured_status)
+            f.close()
+        except OSError:
+            print("Can't find the file soory", os.getcwd())
+
+football = Wrexham()
+football.GetPlayerinfo(2)
+football.ChangeCommunityInvolvement(3,18)
+football.ChangedInjured(True,33)
+
+
